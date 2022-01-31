@@ -12,11 +12,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Check Out Source Code from Repository
+      uses: actions/checkout@v2
     
-    - name: Setup .NET
+    - name: Setup dotnet Environment
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
+    
+    - name:  Display dotnet Version
+      run:  dotnet --version
+      
     - name: Print Hello World
       run: echo Hello World

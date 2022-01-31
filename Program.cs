@@ -1,4 +1,4 @@
-namespace first-dotnet-core
+namespace FirstDotnetCore
 {
     class Program
     {

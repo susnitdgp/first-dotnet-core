@@ -1,3 +1,5 @@
+using System;
+
 namespace FirstDotnetCore
 {
     class Program
@@ -8,3 +10,4 @@ namespace FirstDotnetCore
         }
     }
 }
+

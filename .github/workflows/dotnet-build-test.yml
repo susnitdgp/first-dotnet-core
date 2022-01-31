@@ -22,6 +22,12 @@ jobs:
     
     - name:  Display dotnet Version
       run:  dotnet --version
+
+    - name: Install dependencies
+      run: dotnet restore
+
+    - name: Build Project
+      run: dotnet build --configuration Release --no-restore
       
     - name: Print Hello World
       run: echo Hello World

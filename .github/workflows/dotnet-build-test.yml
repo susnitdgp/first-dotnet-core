@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [ master ]
 
+env:
+  PACKAGE_PATH: './publish'
+  DOTNET_VERSION: '3.1.x'
+
 jobs:
   build:
 
@@ -18,7 +22,7 @@ jobs:
     - name: Setup dotnet Environment
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.1.x
+        dotnet-version: ${{env.DOTNET_VERSION}}
     
     - name:  Display dotnet Version
       run:  dotnet --version
@@ -28,6 +32,9 @@ jobs:
 
     - name: Build Project
       run: dotnet build --configuration Release --no-restore
+
+    - name: Publish App for deployment
+      run: dotnet publish --configuration Release --no-build --output ${{env.PACKAGE_PATH}}
       
     - name: Print Hello World
       run: echo Hello World

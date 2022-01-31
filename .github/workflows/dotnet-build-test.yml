@@ -35,6 +35,12 @@ jobs:
 
     - name: Publish App for deployment
       run: dotnet publish --configuration Release --no-build --output ${{env.PACKAGE_PATH}}
+    
+    - name: Publish Artifacts
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: FirstDotnetCore
+        path: ${{env.PACKAGE_PATH}}
       
     - name: Print Hello World
       run: echo Hello World

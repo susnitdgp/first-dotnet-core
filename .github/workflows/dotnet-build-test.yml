@@ -7,6 +7,7 @@ on:
     branches: [ master ]
 
 env:
+  AZURE_WEBAPP_NAME: 'goswamiapp001'
   PACKAGE_PATH: './publish'
   DOTNET_VERSION: '3.1.x'
 
@@ -35,6 +36,13 @@ jobs:
 
     - name: Publish App for deployment
       run: dotnet publish --configuration Release --no-build --output ${{env.PACKAGE_PATH}}
+
+#   - name: Deploy to Azure Webapps
+#      uses: azure/webapp-deploy@v2
+#      with:
+#        app-name: ${{env. AZURE_WEBAPP_NAME}}
+#        publish-profile: ${{secrets.AZUR_WEBAPP_PUBLISH_PROFILE}}
+#       package: ${{env.PACKAGE_PATH}}
     
     - name: Publish Artifacts
       uses: actions/upload-artifact@v2
